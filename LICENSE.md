@@ -1,4 +1,4 @@
-# Copyright 2016 DIKU
+# Copyright 2017 Oleks
 
 Licensed under the EUPL v.1.1 only (the "Licence");
 
