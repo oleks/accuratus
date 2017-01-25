@@ -1,5 +1,3 @@
-{-# LANGUAGE DeriveGeneric #-}
-
 module Ast where
 
 import Data.Number.MPFR.Mutable
