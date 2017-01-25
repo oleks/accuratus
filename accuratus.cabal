@@ -1,0 +1,38 @@
+name:                accuratus
+version:             0.0.1
+synopsis:            Research Apparatus for Accurate Arithemtic
+description:         Research Apparatus for Accurate Arithemtic;
+                     see README.org for further details.
+homepage:            https://github.com/oleks/accuratus#readme
+license:             BSD3
+license-file:        LICENSE.md
+author:              Oleks Shturmov <oleks@oleks.info>
+maintainer:          Oleks Shturmov <oleks@oleks.info>
+copyright:           2017 Oleks
+category:            Web
+build-type:          Simple
+extra-source-files:  README.org
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Ast
+  ghc-options:         -Wall
+  build-depends:       base >= 4.7 && < 5
+                     , GenericPretty >= 1.2.1
+                     , pretty >= 1.1.3.3
+                     , hmpfr >= 0.4.2.1
+  default-language:    Haskell2010
+
+executable accuratus
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , accuratus
+                     , GenericPretty >= 1.2.1
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/oleks/accuratus
