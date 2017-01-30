@@ -47,7 +47,7 @@ mainParse :: Prog -> IO ()
 mainParse = putStrLn . pretty
 
 mainDiff :: Prog -> IO ()
-mainDiff = putStrLn . pretty . FD.diff
+mainDiff = putStrLn . pretty . FD.allFstDerivs
 
 main :: IO ()
 main = do

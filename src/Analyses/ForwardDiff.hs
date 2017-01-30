@@ -19,5 +19,5 @@ expDiff n (ExpMul l r)  =
 progDiff :: String -> Prog -> Prog
 progDiff n (Prog e) = Prog $ expDiff n e
 
-diff :: Prog -> [Prog]
-diff p = fmap (flip progDiff $ p) (freeVarList p)
+allFstDerivs :: Prog -> [Prog]
+allFstDerivs p = fmap (flip progDiff $ p) (freeVarList p)
