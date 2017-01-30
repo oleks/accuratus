@@ -22,6 +22,7 @@ library
                        Analyses.FreeVars
                        Analyses.ErrorComplexity
                        Analyses.ForwardDiff
+                       Analyses.Reduce
   ghc-options:         -Wall
   build-depends:       base >= 4.7 && < 5
                      , containers >= 0.5.7.1
