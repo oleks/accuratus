@@ -1,3 +1,9 @@
+{-|
+Module      : Analyses.Reduce
+Stability   : experimental
+
+Reduce the AST. Conservative, but safe in terms of floating-point semantics.
+-}
 module Analyses.Reduce ( reduce ) where
 
 import Ast
