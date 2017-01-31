@@ -2,7 +2,7 @@ module Main where
 
 import Ast
 import Parser
-import qualified Analyses.ForwardDiff as FD
+import qualified Analyses.SymDiff as SD
 import qualified Analyses.Reduce as R
 
 import System.Directory ( doesFileExist )
@@ -48,7 +48,7 @@ mainParse :: Prog -> IO ()
 mainParse = putStrLn . pretty
 
 mainDiff :: Prog -> IO ()
-mainDiff = putStrLn . pretty . map R.reduce . FD.allFstDerivs
+mainDiff = putStrLn . pretty . map R.reduce . SD.allFstDerivs
 
 main :: IO ()
 main = do

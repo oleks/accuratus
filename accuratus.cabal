@@ -21,7 +21,7 @@ library
                        Parser.Impl
                        Analyses.FreeVars
                        Analyses.ErrorComplexity
-                       Analyses.ForwardDiff
+                       Analyses.SymDiff
                        Analyses.Reduce
   ghc-options:         -Wall
   build-depends:       base >= 4.7 && < 5

@@ -2,6 +2,8 @@ module Analyses.ForwardDiff where
 
 import Ast
 import Analyses.FreeVars
+import Analyses.Reduce
+import Utility
 
 litDiff :: String -> Lit -> Lit
 litDiff _  (LitCon c) = LitCon c
@@ -21,3 +23,9 @@ progDiff n (Prog e) = Prog $ expDiff n e
 
 allFstDerivs :: Prog -> [Prog]
 allFstDerivs p = fmap (flip progDiff $ p) (freeVarList p)
+
+allNthDerivs :: Prog -> [Prog]
+allNthDerivs p =
+  let vars = freeVarList p
+      derivs = concatMap (\p -> fmap (reduce $ flip progDiff $ p) vars)
+  in  fix derivs [p]
