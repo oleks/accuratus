@@ -8,5 +8,3 @@ echo "Checking $file with hlint:"
 if ! hlint "$file"; then
   exit 1
 fi
-
-exit 0
