@@ -5,7 +5,7 @@ import Ast
 import Data.Set
 
 expFreeVars :: LitExp -> Set String
-expFreeVars e = foldMap litVars e
+expFreeVars = foldMap litVars
   where
     litVars :: Lit -> Set String
     litVars (LitVar s) = singleton s
