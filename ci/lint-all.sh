@@ -2,10 +2,10 @@
 
 set -euo pipefail
 
+lint=$(dirname "$0")/lint.sh
+
 for file in $(git ls-files | grep '\.hs$'); do
-  echo "Checking $file with hlint:"
-  if ! hlint "$file"; then
-    exit 1
-  fi
+  lint "$file"
 done
+
 exit 0
