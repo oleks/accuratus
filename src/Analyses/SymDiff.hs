@@ -1,4 +1,4 @@
-module Analyses.SymDiff where
+module Analyses.SymDiff ( fstDeriv, allFstDerivs ) where
 
 import Ast
 import Analyses.FreeVars
