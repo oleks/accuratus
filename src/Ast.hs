@@ -37,7 +37,7 @@ instance Foldable Exp where
 
 type LitExp = Exp Lit
 
-data Prog
+newtype Prog
   = Prog LitExp
   deriving (Eq, Ord, Show, Generic)
 
