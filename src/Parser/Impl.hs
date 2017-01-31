@@ -50,7 +50,7 @@ parseExp2Op = token $ choice
   , binOp "-" ExpSub
   ]
 
-parseExp2 :: ReadP (LitExp)
+parseExp2 :: ReadP LitExp
 parseExp2 = chainl1 parseExp1 parseExp2Op
 
 parseProg :: ReadP Prog
