@@ -72,6 +72,7 @@ install:
       ;;
   esac
   set +ex
+- ./ci/lint.sh
 
 script:
 - |
