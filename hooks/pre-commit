@@ -1,8 +1,4 @@
 #!/usr/bin/env sh
 
-set -euo pipefail
-
 # cwd is root of git repository
-./ci/lint.sh
-
-exit 0
+./ci/lint-added.sh
