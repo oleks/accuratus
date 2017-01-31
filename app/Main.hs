@@ -59,9 +59,9 @@ main = do
   case args of
     [] -> exitNoCommand
     ["parse", arg] ->
-      with arg $ mainParse
+      with arg mainParse
     ["reduce", arg] ->
-      with arg $ mainReduce
+      with arg mainReduce
     ["symdiff", arg] ->
-      with arg $ mainSymDiff
+      with arg mainSymDiff
     (c:_) -> exitInvalidCommand c
