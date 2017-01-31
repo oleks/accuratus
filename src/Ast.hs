@@ -7,7 +7,7 @@ import Text.PrettyPrint.GenericPretty
 data Lit
   = LitCon String
   | LitVar String
-  deriving (Eq, Show, Generic)
+  deriving (Eq, Ord, Show, Generic)
 
 instance Out Lit
 
@@ -17,7 +17,7 @@ data Exp a
   | ExpSub (Exp a) (Exp a)
   | ExpSum [Exp a]
   | ExpMul (Exp a) (Exp a)
-  deriving (Eq, Show, Generic)
+  deriving (Eq, Ord, Show, Generic)
 
 instance (Out a) => Out (Exp a)
 
@@ -39,6 +39,6 @@ type LitExp = Exp Lit
 
 data Prog
   = Prog LitExp
-  deriving (Eq, Show, Generic)
+  deriving (Eq, Ord, Show, Generic)
 
 instance Out Prog
