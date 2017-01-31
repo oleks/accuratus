@@ -1,6 +1,6 @@
 #+TITLE: Research Apparatus for Accurate Arithemtic
 
 #+ATTR_HTML: title=License: EUPLv1.1
-[[LICENSE.md][https://img.shields.io/badge/License-EUPL%20v1.1-blue.svg]]
+[[LICENSE.md][file:https://img.shields.io/badge/License-EUPL%20v1.1-blue.svg]]
 #+ATTR_HTML: title=Travis CI (Linux + macOS) Status
 [[https://travis-ci.org/oleks/accuratus][file:https://travis-ci.org/oleks/accuratur.svg]]
