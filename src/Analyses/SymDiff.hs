@@ -6,8 +6,8 @@ import Analyses.Reduce
 
 litDiff :: String -> Lit -> Lit
 litDiff _  (LitCon c) = LitCon c
-litDiff n  (LitVar m) | n == m     = LitCon "1"
-litDiff _  (LitVar m) | otherwise  = LitVar m
+litDiff n  (LitVar m) | n == m = LitCon "1"
+litDiff _  (LitVar m) = LitVar m
 
 expDiff :: String -> LitExp -> LitExp
 expDiff n (ExpLit lit)  = ExpLit (litDiff n lit)
