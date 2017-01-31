@@ -21,4 +21,4 @@ progDiff :: String -> Prog -> Prog
 progDiff n (Prog e) = Prog $ expDiff n e
 
 allFstDerivs :: Prog -> [Prog]
-allFstDerivs p = fmap (reduce . (flip progDiff p)) (freeVarList p)
+allFstDerivs p = fmap (reduce . flip progDiff p) (freeVarList p)
