@@ -47,8 +47,8 @@ with arg f = do
 mainParse :: Prog -> IO ()
 mainParse = putStrLn . pretty
 
-mainDiff :: Prog -> IO ()
-mainDiff = putStrLn . pretty . map R.reduce . SD.allFstDerivs
+mainSymDiff :: Prog -> IO ()
+mainSymDiff = putStrLn . pretty . SD.allFstDerivs
 
 main :: IO ()
 main = do
@@ -57,6 +57,6 @@ main = do
     [] -> exitNoCommand
     ["parse", arg] ->
       with arg $ mainParse
-    ["diff", arg] ->
-      with arg $ mainDiff
+    ["symdiff", arg] ->
+      with arg $ mainSymDiff
     (c:_) -> exitInvalidCommand c
