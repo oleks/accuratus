@@ -3,6 +3,7 @@
 module Parser.Impl where
 
 import Ast
+import Control.Applicative ( (<$>) )
 import Text.ParserCombinators.ReadP
 import Text.PrettyPrint.GenericPretty
 
@@ -23,10 +24,10 @@ binOp :: String -> (a -> a -> a) -> ReadP (a -> a -> a)
 binOp op f = string op *> pure f
 
 parseLitCon :: ReadP Lit
-parseLitCon = fmap LitCon $ munch1 (`elem` ['0'..'9'])
+parseLitCon = LitCon <$> munch1 (`elem` ['0'..'9'])
 
 parseLitVar :: ReadP Lit
-parseLitVar = fmap LitVar $ munch1 (`elem` ['a'..'z'])
+parseLitVar = LitVar <$> munch1 (`elem` ['a'..'z'])
 
 parseLit :: ReadP Lit
 parseLit = token $ choice
@@ -35,7 +36,7 @@ parseLit = token $ choice
   ]
 
 parseExp0 :: ReadP LitExp
-parseExp0 = fmap ExpLit parseLit
+parseExp0 = ExpLit <$> parseLit
 
 parseExp1Op :: ReadP (LitExp -> LitExp -> LitExp)
 parseExp1Op = token $ binOp "*" ExpMul
@@ -53,13 +54,13 @@ parseExp2 :: ReadP (LitExp)
 parseExp2 = chainl1 parseExp1 parseExp2Op
 
 parseProg :: ReadP Prog
-parseProg = fmap Prog parseExp2
+parseProg = Prog <$> parseExp2
 
 parse :: ReadP a -> String -> [(a, String)]
 parse = readP_to_S
 
 fullParse :: ReadP a -> String -> [a]
-fullParse p s = fmap fst $ parse (p <* (skipSpaces >> eof)) s
+fullParse p s = fst <$> parse (p <* (skipSpaces >> eof)) s
 
 parseString' :: ReadP a -> String -> Either (ParseErrorImpl a) a
 parseString' p s =
@@ -72,7 +73,7 @@ parseString :: String -> Either ParseError Prog
 parseString = parseString' parseProg
 
 parseFile' :: ReadP a -> FilePath -> IO (Either (ParseErrorImpl a) a)
-parseFile' p path = fmap (parseString' p) $ readFile path
+parseFile' p path = parseString' p <$> readFile path
 
 parseFile :: FilePath -> IO (Either ParseError Prog)
 parseFile = parseFile' parseProg
