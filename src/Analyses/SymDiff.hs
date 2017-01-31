@@ -20,5 +20,8 @@ expDiff n (ExpMul l r)  =
 progDiff :: String -> Prog -> Prog
 progDiff n (Prog e) = Prog $ expDiff n e
 
+fstDeriv :: Prog -> String -> Prog
+fstDeriv p = reduce . flip progDiff p
+
 allFstDerivs :: Prog -> [Prog]
-allFstDerivs p = fmap (reduce . flip progDiff p) (freeVarList p)
+allFstDerivs p = fmap (fstDeriv p) (freeVarList p)
